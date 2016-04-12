@@ -19,12 +19,12 @@ public class Main {
   	//Leemos todos los ficheros que hayan en el array de nombres
   	LecturaFichero lectura[] = new LecturaFichero[nombres.length];
   	for (int i = 0; i < nombres.length; i++) {
-      lectura[i] = new LecturaFichero(nombres[i]);      
+  	    lectura[i] = new LecturaFichero(nombres[i]);
     }
   	
   	//Comprobamos que podemos acceder a los datos almacenados de cualquier lectura que hicimos
-  	int NUM_LECTURA = 6;
-    System.out.println("ZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
+  	int NUM_LECTURA = 6; // No puede ser 5, 5 corresponde a St
+  	//System.out.println("ZZZZZZZZZZZZZZZZZZZZZZZZZZZ");  //Separador entre los datos de carga y los datos de muestra
     System.out.println(lectura[NUM_LECTURA].getNombre());
     lectura[NUM_LECTURA].printProbabilidades();
   }
@@ -128,7 +128,7 @@ public class Main {
   	boolean opcion = false;
   	while(!opcion){
   		System.out.println("Numero de enemigos:");
-  		System.out.println("1. Mucos");
+  		System.out.println("1. Muchos");
   		System.out.println("2. Pocos");
   		System.out.print("Introducir opcion: ");
   		int eleccion = reader.nextInt();

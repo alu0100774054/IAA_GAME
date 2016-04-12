@@ -13,7 +13,7 @@ public class LecturaFichero {
   
   public LecturaFichero(String nombreFichero) throws FileNotFoundException {
     this.nombreFichero = nombreFichero;
-    System.out.println(getNombreFichero());
+//    System.out.println(getNombreFichero());
     leerFichero();
   }
   
@@ -24,7 +24,7 @@ public class LecturaFichero {
     
     Scanner s = null;
     try {
-      System.out.println("... Datos cargados: ...");
+//      System.out.println("... Datos cargados: ...");
       nombre = getNombreFichero();
       setNumeroFilas(Integer.parseInt(buffer.readLine()));  //Debemos traducir a número el valor del fichero que es string
       setNumeroColumnas(Integer.parseInt(buffer.readLine())); //Lo mismo
@@ -35,12 +35,14 @@ public class LecturaFichero {
         String palabra[] = linea.split(" ");  //y la separamos por "palabras" que equivalen a cada numero.
         for (int j = 0; j < getNumeroColumnas(); j++) { //Por cada columna (valor numérico) de la línea
           probabilidades[i][j] = Integer.parseInt(palabra[j]);  //lo guardamos en probabilidades[][] (transformado a int)
-          System.out.print(probabilidades[i][j] + " "); // Con esto imprimimos los datos formateados y legibles
+//          System.out.print(probabilidades[i][j] + " "); // Con esto imprimimos los datos formateados y legibles
         }
-        System.out.println();
+//        System.out.println(); // Conseguimos que se impriman los datos por filas
       }
     } catch (Exception ex) {
+      System.out.print("[" + nombre + "] -> ");
       System.out.println("Mensaje: " + ex.getMessage());
+      System.out.println();
     } finally {
       try {
         if (s != null)
