@@ -51,7 +51,7 @@ public class LecturaFichero {
     }
   }
   
-  private String getNombre() {
+  public String getNombre() {
     return nombre;
   }
   
@@ -77,6 +77,15 @@ public class LecturaFichero {
   
   private int[][] getProbabilidades() {
     return probabilidades;
+  }
+  public void printProbabilidades() {
+    for (int i = 0; i < getNumeroFilas(); i++) { //Para cada fila del fichero
+      for (int j = 0; j < getNumeroColumnas(); j++) { //Por cada columna (valor numérico) de la línea
+        System.out.print(probabilidades[i][j] + " "); // Con esto imprimimos los datos formateados y legibles
+      }
+      System.out.println();
+    }
+
   }
   
   private void setProbabilidades(int[][] probabilidades) {

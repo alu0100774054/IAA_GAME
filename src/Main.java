@@ -15,8 +15,18 @@ public class Main {
   	int numberEnemies = numeroEnemigos(reader);
   	int weaponNear = armaCerca(reader);
   	int healthNear = saludCerca(reader);*/
+
+  	//Leemos todos los ficheros que hayan en el array de nombres
+  	LecturaFichero lectura[] = new LecturaFichero[nombres.length];
+  	for (int i = 0; i < nombres.length; i++) {
+      lectura[i] = new LecturaFichero(nombres[i]);      
+    }
   	
-  	LecturaFichero lectura = new LecturaFichero("Health.txt");
+  	//Comprobamos que podemos acceder a los datos almacenados de cualquier lectura que hicimos
+  	int NUM_LECTURA = 6;
+    System.out.println("ZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
+    System.out.println(lectura[NUM_LECTURA].getNombre());
+    lectura[NUM_LECTURA].printProbabilidades();
   }
   
 
