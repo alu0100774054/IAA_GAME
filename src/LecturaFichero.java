@@ -13,6 +13,7 @@ public class LecturaFichero {
 
   public LecturaFichero(String nombreFichero) throws FileNotFoundException {
     this.nombreFichero = nombreFichero;
+    System.out.println(getNombreFichero());
     leerFichero();
   }
 

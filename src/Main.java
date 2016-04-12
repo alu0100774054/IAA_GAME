@@ -1,21 +1,22 @@
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws FileNotFoundException {
     
   	Scanner reader = new Scanner(System.in);;
   	String[] nombres = {"Health.txt", "HealthNear.txt", "Noise.txt", "NumberEnemies.txt", "OpponentWeapon.txt", "St.txt", "St1.txt", "Weapon.txt", "WeaponNear.txt"};
-  	
-  	
-  	int health = salud(reader);
+  		
+  	/*int health = salud(reader);
   	int weapon = arma(reader);
   	int enemyWeapon = armaEnemigo(reader);
   	int hearNoise = ruidoCerca(reader);
   	int numberEnemies = numeroEnemigos(reader);
   	int weaponNear = armaCerca(reader);
-  	int healthNear = saludCerca(reader);
+  	int healthNear = saludCerca(reader);*/
   	
+  	LecturaFichero lectura = new LecturaFichero("Health.txt");
   }
   
 
