@@ -7,30 +7,60 @@ public class Main {
     
   	Scanner reader = new Scanner(System.in);;
   	String[] nombres = {"Health.txt", "HealthNear.txt", "Noise.txt", "NumberEnemies.txt", "OpponentWeapon.txt", "St.txt", "St1.txt", "Weapon.txt", "WeaponNear.txt"};
-  		
-  	/*int health = salud(reader);
+  
+  	int health = salud(reader);
   	int weapon = arma(reader);
   	int enemyWeapon = armaEnemigo(reader);
   	int hearNoise = ruidoCerca(reader);
+  	System.out.println(hearNoise);
   	int numberEnemies = numeroEnemigos(reader);
   	int weaponNear = armaCerca(reader);
-  	int healthNear = saludCerca(reader);*/
-
-  	//Leemos todos los ficheros que hayan en el array de nombres
-  	LecturaFichero lectura[] = new LecturaFichero[nombres.length];
-  	for (int i = 0; i < nombres.length; i++) {
-  	    lectura[i] = new LecturaFichero(nombres[i]);
-    }
+  	int healthNear = saludCerca(reader);
+  	int[] indicesColumnas = {health, healthNear, hearNoise, numberEnemies, enemyWeapon, weapon, weaponNear};
   	
-  	//Comprobamos que podemos acceder a los datos almacenados de cualquier lectura que hicimos
-  	int NUM_LECTURA = 6; // No puede ser 5, 5 corresponde a St
-  	//System.out.println("ZZZZZZZZZZZZZZZZZZZZZZZZZZZ");  //Separador entre los datos de carga y los datos de muestra
-    System.out.println(lectura[NUM_LECTURA].getNombre());
-    lectura[NUM_LECTURA].printProbabilidades();
+  	int indiceFilaSt = pedirAccionSt(reader);
+  	//Leemos todos los ficheros que hayan en el array de nombres
+  	TablaProbabilidades tablas[] = new TablaProbabilidades[nombres.length];
+  	for (int i = 0; i < nombres.length; i++) {
+  	    tablas[i] = new TablaProbabilidades(nombres[i]);
+    }
+  	Problema problema = new Problema(tablas, indicesColumnas, indiceFilaSt);
+  	Solucion solucion = new Solucion(problema);
   }
   
 
-	private static int salud(Scanner reader){
+	private static int pedirAccionSt(Scanner reader) {
+	  boolean opcion = false;
+    while(!opcion){
+      System.out.println("Que acción está realizando en el estado St: ");
+      System.out.println("1. Atacar");
+      System.out.println("2. Buscar arma");
+      System.out.println("3. Buscar vida");
+      System.out.println("4. Explorar");
+      System.out.println("5. Huir");
+      System.out.println("6. Detectar peligro");
+      System.out.print("Introducir opcion: ");
+      int eleccion = reader.nextInt();
+      
+      switch(eleccion){
+      case 1: return 0;
+      case 2: return 1;
+      case 3: return 2;
+      case 4: return 3;
+      case 5: return 4;
+      case 6: return 5;
+        
+      default:  System.out.println("Opcion incorrecta");
+                System.out.println("La opcion " + opcion + " no existe");
+                System.out.println(" ");
+          break;
+      }
+    }
+	  return 0;
+  }
+
+
+  private static int salud(Scanner reader){
   	boolean opcion = false;
   	while(!opcion){
   		System.out.println("Salud del personaje: ");
