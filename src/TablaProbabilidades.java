@@ -8,7 +8,7 @@ public class TablaProbabilidades {
   private String nombre;
   private int numeroFilas;
   private int numeroColumnas;
-  private int probabilidades[][];
+  private Double probabilidades[][];
   private final int SI = 0;
   private final int NO = 1;
   //private final String[] NOMBRES = {"ATACAR", "BUSCAR_ARMA", "BUSCAR_VIDA", "EXPLORAR", "HUIR", "DETECTAR_PELIGRO"};
@@ -31,13 +31,13 @@ public class TablaProbabilidades {
       nombre = getNombreFichero();
       setNumeroFilas(Integer.parseInt(buffer.readLine()));  //Debemos traducir a número el valor del fichero que es string
       setNumeroColumnas(Integer.parseInt(buffer.readLine())); //Lo mismo
-      probabilidades = new int[getNumeroFilas()][getNumeroColumnas()];  //Inicializamos probabilidades[][] con fil y col
+      probabilidades = new Double[getNumeroFilas()][getNumeroColumnas()];  //Inicializamos probabilidades[][] con fil y col
 
       for (int i = 0; i < getNumeroFilas(); i++) { //Para cada fila del fichero
         String linea = buffer.readLine(); //la guardamos en "linea"
         String palabra[] = linea.split(" ");  //y la separamos por "palabras" que equivalen a cada numero.
         for (int j = 0; j < getNumeroColumnas(); j++) { //Por cada columna (valor numérico) de la línea
-          probabilidades[i][j] = Integer.parseInt(palabra[j]);  //lo guardamos en probabilidades[][] (transformado a int)
+          probabilidades[i][j] = Double.parseDouble(palabra[j]);  //lo guardamos en probabilidades[][] (transformado a int)
 //          System.out.print(probabilidades[i][j] + " "); // Con esto imprimimos los datos formateados y legibles
         }
 //        System.out.println(); // Conseguimos que se impriman los datos por filas
@@ -56,7 +56,7 @@ public class TablaProbabilidades {
     }
   }
   
-  public int getValorProbabilidad(int accion, int eleccion) {
+  public Double getValorProbabilidad(int accion, int eleccion) {
     return getProbabilidades()[accion][eleccion];
   }
   public String getNombre() {
@@ -83,7 +83,7 @@ public class TablaProbabilidades {
     this.numeroColumnas = numeroColumnas;
   }
   
-  private int[][] getProbabilidades() {
+  private Double[][] getProbabilidades() {
     return probabilidades;
   }
   public void printProbabilidades() {
@@ -96,7 +96,7 @@ public class TablaProbabilidades {
 
   }
   
-  private void setProbabilidades(int[][] probabilidades) {
+  private void setProbabilidades(Double[][] probabilidades) {
     this.probabilidades = probabilidades;
   }
   
@@ -116,7 +116,7 @@ public class TablaProbabilidades {
     return NO;
   }
   
-  public int getElemento(int i, int j){
+  public Double getElemento(int i, int j){
     return probabilidades[i][j];
   }
 }
